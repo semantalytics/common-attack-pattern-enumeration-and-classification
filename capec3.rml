@@ -1,0 +1,328 @@
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix capec: <http://semantalytics.com/2018/11/ns/common-attack-pattern-enumeratin-and-classification/> .
+@base <http://semantaltyics.com/2018/11/id/common-atttack-pattern-enumeration-and-classification-map> .
+
+_:submission-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Submission";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}/submission";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:submissionName;
+    rr:objectMap [
+      rml:reference "Submission_Name";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:submissionOrganization;
+    rr:objectMap [
+      rml:reference "Submission_Organization";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:submissionDate;
+    rr:objectMap [
+      rml:reference "Submission_Date";
+      ]
+    ];
+.
+
+_:required-resource-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Resource";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:requiredResource;
+    rr:objectMap [
+      rml:reference "text()";
+      ]
+    ];
+.
+
+_:mitigation-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Mitigation";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:mitigation;
+    rr:objectMap [
+      rml:reference "text()";
+      ]
+    ];
+.
+
+_:related-weakness-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Related_Weakness";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:relatedWeakness;
+    rr:objectMap [
+      rml:reference "text()";
+      ]
+    ];
+.
+
+_:indicator-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Indicator";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:indicator;
+    rr:objectMap [
+      rml:reference "text()";
+      ]
+    ];
+.
+
+_:prerequisite-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Prerequisite";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}";
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:prerequisite;
+    rr:objectMap [
+      rml:reference "text()";
+      ]
+    ];
+.
+
+_:execution-flow-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Attack_Step";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}/execution-flow/attack-step/{Step}";
+    rr:class capec:Attack
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:step;
+    rr:objectMap [
+      rml:reference "Step";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:technique;
+    rr:objectMap [
+      rml:reference "Technique";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:phase;
+    rr:objectMap [
+      rml:reference "Phase";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:description;
+    rr:objectMap [
+      rml:reference "Description";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:belongsToExecutionFlow;
+    rr:objectMap [
+      rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{ancestor::Attack_Pattern/@ID}/execution-flow";
+      ]
+    ];
+.
+
+_:attack-pattern-map
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Attack_Pattern";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{@ID}";
+    rr:class capec:Attack
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:name;
+    rr:objectMap [
+      rml:reference "@Name";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:likelihoodOfAttack;
+    rr:objectMap [
+      rml:reference "Likelihood_Of_Attack";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:typicalSeverity;
+    rr:objectMap [
+      rml:reference "Typical_Severity";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:abstraction;
+    rr:objectMap [
+      rml:reference "@Abstraction";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:status;
+    rr:objectMap [
+      rml:reference "@Status";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:description;
+    rr:objectMap [
+      rml:reference "Description";
+      rr:language "en";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:typicalSeverity;
+    rr:objectMap [
+      rml:reference "Typical_Severity";
+      rr:language "en";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:hasExecutionFlow;
+    rr:objectMap [
+      rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{@ID}/execution-flow";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:submission;
+    rr:objectMap [
+      rr:template "http://semantalytics.com/2019/11/id/common-attack-pattern-enumeration/{@ID}/submission";
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modification;
+    rr:objectMap [
+	rr:parentTriplesMap _:modifications-map
+      ]
+    ];
+.
+
+_:modifications-map
+
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Modifications";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:termType rr:BlankNode
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modification;
+    rr:objectMap [
+	rr:parentTriplesMap _:modification-map
+      ]
+    ];
+.
+
+_:modification-map
+
+  rml:logicalSource [
+    rml:source "./capec.xml" ;
+    rml:iterator "//Modification";
+    rml:referenceFormulation ql:XPath
+  ];
+
+  rr:subjectMap [
+    rr:termType rr:BlankNode
+  ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modificationName;
+    rr:objectMap [
+	rr:reference "Modification_Name"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modificationOrganization;
+    rr:objectMap [
+	rr:reference "Modification_Organization"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modificationDate;
+    rr:objectMap [
+	rr:reference "Modification_Date"
+      ]
+    ];
+
+  rr:predicateObjectMap [
+    rr:predicate capec:modificationComment;
+    rr:objectMap [
+	rr:reference "Modification_Comment"
+      ]
+    ];
+.
+
